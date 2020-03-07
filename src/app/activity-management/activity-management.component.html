@@ -1,0 +1,32 @@
+<div class="main-content">
+    <div class="section-content section-content-p30">
+        <div class="container-fluid">
+            <div>
+                <table class="table table-striped">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th>活动名称</th>
+                            <th>开始时间</th>
+                            <th>结束时间</th>
+                            <th>报名状态</th> 
+                            <th>取消报名</th>   
+                            <th>填写反馈</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let register of registers">
+                            <td class="align-middle">{{ register.activityName }}</td>
+                            <td>{{ register.startTime | date }}</td>
+                            <td>{{ register.endTime | date }}</td>
+                            <div *ngIf="register.state.toString() == 'PENDING';then content else other_content">here is ignored</div>
+                            <ng-template #content><td>待批准</td></ng-template>
+                            <ng-template #other_content><td>已批准</td></ng-template>
+                            <td>取消报名</td>
+                            <td><a routerLink="/addComment" manageVolunteer="active-link">填写反馈</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

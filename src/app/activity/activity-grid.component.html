@@ -1,0 +1,40 @@
+<div class="main-content">
+    <div class="section-content section-content-p30">
+        <div class="container-fluid">
+            <div>
+<table class="table">
+    <thead class="thead-dark">
+        <tr>
+            <th>活动名称</th>
+            <th>活动内容</th>
+            <th>开始时间</th>
+            <th>结束时间</th>
+            <th>发布时间</th>
+            <th>报名状态</th>
+            <th>立即报名</th>
+            <th>修改活动</th>
+            <th>删除活动</th>
+            <th>公益时长申报</th>
+            <th>志愿者管理</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let activity of activities">
+            <td class="align-middle">{{ activity.name }}</td>
+            <td>{{ activity.content }}</td>
+            <td>{{ activity.startTime | date }}</td>
+            <td>{{ activity.endTime | date }}</td>
+            <td>{{ activity.publishTime | date }}</td>
+            <td>{{ activity.enrollState }}</td>
+            <td><button (click)="addRegister()" >立即报名</button></td>
+            <td><button (click)="updateAUser(user.userName)" >修改活动</button></td>
+            <td><button (click)="deleteAUser(user.userName)" >删除活动</button></td>
+            <td><button (click)="deleteAUser(user.userName)" >公益时长申报</button></td>
+            <td><a routerLink="/manageVolunteer" manageVolunteer="active-link">志愿者管理</a></td>
+        </tr>
+    </tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
