@@ -10,9 +10,11 @@ export class UserService {
 
   private baseUrl = 'http://localhost:8062/user';
   private getAllUsersUrl = this.baseUrl + '/getUsers';
+  private getUsersUrl = this.baseUrl + '/getUserById/';
   private addUserUrl = this.baseUrl + '/addUser';
   private userDeleteUrl = this.baseUrl + '/deleteUser';
   private updateUserUrl = this.baseUrl + '/updateUser';
+  private resetPasswordUrl = this.baseUrl + '/resetPassword/';
 
   
   constructor(private httpClient: HttpClient) { }
@@ -22,6 +24,10 @@ export class UserService {
     
     return this.httpClient.get<User[]>(`${this.getAllUsersUrl}`);
  
+  }
+
+  getUserById(id: Number): Observable<User> {
+    return this.httpClient.get<User>(`${this.getUsersUrl}` + id);
   }
 
   // 添加一个新用户
@@ -37,9 +43,14 @@ export class UserService {
     return this.httpClient.put<User>(`${this.userDeleteUrl}/${userName}`, userName, { observe: 'response' });
   }
 
-  updateUser(user: User): Observable<Response> {
-    //debugger;
-    return this.httpClient.put<Response>(`${this.updateUserUrl}`, user);
+  resetPassword(userId: number): Observable<HttpResponse<User>> {
+
+    return this.httpClient.put<User>(`${this.resetPasswordUrl}` + userId, userId, { observe: 'response' });
+  }
+
+  updateUser(user: User): Observable<HttpResponse<User>> {
+
+    return this.httpClient.put<User>(`${this.updateUserUrl}`, user, { observe: 'response' });
   }
 
 }

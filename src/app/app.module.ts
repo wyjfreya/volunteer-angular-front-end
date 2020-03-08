@@ -24,8 +24,8 @@ const routes: Routes = [
   {path:'showUser/:id', component: UserComponent},
   {path:'addActivity', component: AddActivityComponent}, //添加活动
   {path:'updateActivity/:id', component: AddActivityComponent}, //修改活动
-  {path:'addUser', component: AddUserComponent},
-  {path:'addUser/:userId', component: AddUserComponent},
+  {path:'addUser', component: AddUserComponent}, //新建用户
+  {path:'updateUser/:id', component: AddUserComponent},
   {path:'manageVolunteer', component: VolunteerManagementComponent},
   {path:'addComment', component: AddCommentComponent}
 ];

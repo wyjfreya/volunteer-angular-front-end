@@ -49,6 +49,17 @@ export class UserComponent implements OnInit {
     console.log(user.value);
     this.userService.updateUser(user.value).subscribe();
   }
+
+  resetPassword(id: number) {
+    this.userService.resetPassword(id).subscribe(
+      (data: HttpResponse<User>) => {
+        alert("重置成功！");
+      },
+      //handle errors here
+      (err: HttpResponse<User>) => {
+        alert("重置失败！");
+      });
+  }
 }
 
   

@@ -20,13 +20,15 @@
                         <tr *ngFor="let user of users">
                             <td class="align-middle">{{ user.userName }}</td>
                             <td class="align-middle">{{ user.name }}</td>
-                            <td class="align-middle">{{ user.gender }}</td>
+                            <div *ngIf="user.gender=='0';then content else other_content">here is ignored</div>
+                            <ng-template #content><td class="align-middle">男</td></ng-template>
+                            <ng-template #other_content><td class="align-middle">女</td></ng-template>
                             <td class="align-middle">{{ user.phoneNumber}}</td>
                             <td class="align-middle">{{ user.address }}</td>
                             <td class="align-middle">{{ user.registerDate | date }}</td>
-                            <td class="align-middle"><button (click)="updateAUser(user.id)" >修改用户</button></td>
-                            <td class="align-middle"><button (click)="deleteAUser(user.id)" >删除用户</button></td>
-                            <td class="align-middle"><button (click)="resetPassword(user.id)">重置密码</button></td>
+                            <td class="align-middle"><a routerLink="/updateUser/{{ user.id }}" manageVolunteer="active-link">修改用户</a></td>
+                            <td class="align-middle"><button (click)="deleteAUser(user.userName)" class="btn btn-link">删除用户</button></td>
+                            <td class="align-middle"><button (click)="resetPassword(user.id)" class="btn btn-link">重置密码</button></td>
                         </tr>
                     </tbody>
                 </table>

@@ -14,7 +14,7 @@ export class AddActivityComponent implements OnInit {
 
   currentActivityId: number;
   activity: Activity = new Activity();
-  startTime: Date;
+  //startTime: Date;
   
   constructor(private volunteerService: VolunteerService,
               private route: ActivatedRoute) { }
