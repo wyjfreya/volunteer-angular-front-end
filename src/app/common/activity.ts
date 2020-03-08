@@ -5,5 +5,6 @@ export class Activity {
     startTime: Date;
     endTime: Date;
     publishTime:Date;
-    enrollState: number;
+    enrollState: String;
+    isCompleted: number;
 }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Register } from '../common/register';
 import { RegisterService } from '../services/register.service';
+import { HttpResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-activity-management',
@@ -16,6 +17,19 @@ export class ActivityManagementComponent implements OnInit {
     this.getRegisters();
   }
 
+  deleteRegister(id: number) {
+    this.registerService.deleteRegister(id).subscribe(
+      (data: HttpResponse<String>) => {
+        alert("取消报名成功");
+        this.getRegisters();
+      },
+      //handle errors here
+      (err: HttpResponse<String>) => {
+        alert("取消报名失败");
+      }
+    );
+  }
+
   getRegisters() {
     
     this.registerService.getAllRegister().subscribe(
@@ -29,7 +43,6 @@ export class ActivityManagementComponent implements OnInit {
         
       }
     )
-
   }
 
 }

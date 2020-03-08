@@ -32,9 +32,9 @@ export class UserService {
   }
 
 
-  deleteUser(userName: String): Observable<Response> {
+  deleteUser(userName: String): Observable<HttpResponse<User>> {
     //debugger;
-    return this.httpClient.put<Response>(`${this.userDeleteUrl}/${userName}`, userName);
+    return this.httpClient.put<User>(`${this.userDeleteUrl}/${userName}`, userName, { observe: 'response' });
   }
 
   updateUser(user: User): Observable<Response> {

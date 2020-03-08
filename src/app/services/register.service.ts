@@ -14,6 +14,7 @@ export class RegisterService {
   private getAllUserByActivityUrl = this.baseUrl + '/getAllUserByActivity';
   private getAllRegisterByUserUrl = this.baseUrl + '/getAllRegisterByUser';
   private addRegisterUrl = this.baseUrl + '/addRegister';
+  private deleteRegisterUrl = this.baseUrl + '/deleteRegister/';
   
 
   getAllUser(): Observable<Register[]> {
@@ -21,11 +22,15 @@ export class RegisterService {
   }
 
   getAllRegister(): Observable<Register[]> {
-    return this.httpClient.get<Register[]>(`${this.getAllRegisterByUserUrl + '/1'}`);
+    return this.httpClient.get<Register[]>(`${this.getAllRegisterByUserUrl + '/2'}`);
   }
 
   addRegister(register: Register): Observable<HttpResponse<Register>> {
     return this.httpClient.post<Register>(`${this.addRegisterUrl}`,register,{ observe: 'response' });
+  }
+
+  deleteRegister(id: number): Observable<HttpResponse<String>>{
+    return this.httpClient.delete<String>(`${this.deleteRegisterUrl}` + id,{ observe: 'response' });
   }
 
 }

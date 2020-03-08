@@ -16,13 +16,13 @@
                     <tbody>
                         <tr *ngFor="let register of registers">
                             <td class="align-middle">{{ register.activityName }}</td>
-                            <td>{{ register.startTime | date }}</td>
-                            <td>{{ register.endTime | date }}</td>
+                            <td class="align-middle">{{ register.startTime | date }}</td>
+                            <td class="align-middle">{{ register.endTime | date }}</td>
                             <div *ngIf="register.state.toString() == 'PENDING';then content else other_content">here is ignored</div>
-                            <ng-template #content><td>待批准</td></ng-template>
-                            <ng-template #other_content><td>已批准</td></ng-template>
-                            <td>取消报名</td>
-                            <td><a routerLink="/addComment" manageVolunteer="active-link">填写反馈</a></td>
+                            <ng-template #content><td class="align-middle">待批准</td></ng-template>
+                            <ng-template #other_content><td class="align-middle">已批准</td></ng-template>
+                            <td class="align-middle"><button (click)="deleteRegister(register.id)" class="btn btn-info">取消报名 </button></td>
+                            <td class="align-middle"><a routerLink="/addComment" manageVolunteer="active-link">填写反馈</a></td>
                         </tr>
                     </tbody>
                 </table>

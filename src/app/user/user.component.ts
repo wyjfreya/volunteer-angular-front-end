@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from '../common/user';
 import { UserService } from '../services/user.service';
+import { HttpResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-user',
@@ -33,7 +34,15 @@ export class UserComponent implements OnInit {
 
   deleteAUser(userName: String) {
     console.log(userName);
-    this.userService.deleteUser(userName).subscribe();
+    this.userService.deleteUser(userName).subscribe(
+      (data: HttpResponse<User>) => {
+        alert("删除成功！");
+        this.getUsers();
+      },
+      //handle errors here
+      (err: HttpResponse<User>) => {
+        alert("删除失败！");
+      });
   }
 
   updateAUser(user) {

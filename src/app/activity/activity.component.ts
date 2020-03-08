@@ -16,7 +16,7 @@ export class ActivityComponent implements OnInit {
   
   activities: Activity[];
   currentUserId: number;
-  registerToAdd: Register;
+
   constructor(private activityService: VolunteerService, private registerService: RegisterService,
     private route: ActivatedRoute) { }
 
@@ -27,23 +27,6 @@ export class ActivityComponent implements OnInit {
     
   }
 
-  addRegister() {
-    this.registerToAdd = new Register();
-    this.registerToAdd.userId = 1;
-    this.registerToAdd.activityId = 1;
-    this.registerService.addRegister(this.registerToAdd).subscribe(
-      (data: HttpResponse<Register>) => {
-        alert("报名成功！");
-      },
-      //handle errors here
-      (err: HttpResponse<Register>) => {
-        alert("您已经报过名，请勿重复报名！");
-        // console.log(err.status);
-        // console.log(err);
-      }
-    ); 
-
-  }
 
   getAllActivities() {
     //check if "userid" parameter is available
@@ -61,9 +44,24 @@ export class ActivityComponent implements OnInit {
         } else {
           this.activities = data;
         }
-        
       }
     )
   }
+
+  deleteActivity(id: number) {
+    this.activityService.deleteActivity(id).subscribe(
+      (data: HttpResponse<Activity>) => {
+        alert("删除成功！");
+        this.getAllActivities();
+      },
+      //handle errors here
+      (err: HttpResponse<Activity>) => {
+        alert("删除失败，请稍后重试！");
+      }
+    )
+
+  }
+
+  
 
 }

@@ -14,12 +14,16 @@ import { AddUserComponent } from './add-user/add-user.component';
 import { VolunteerManagementComponent } from './volunteer-management/volunteer-management.component';
 import { AddCommentComponent } from './add-comment/add-comment.component';
 import { ActivityManagementComponent } from './activity-management/activity-management.component';
+import { VolunteerActivityListComponent } from './volunteer-activity-list/volunteer-activity-list.component';
+
 const routes: Routes = [
-  {path:'showActivity', component: ActivityComponent},
-  {path:'showActivity/:userId', component: ActivityManagementComponent},
+  {path:'showActivity', component: ActivityComponent}, //管理员查看所有活动
+  {path:'showAllActivity', component: VolunteerActivityListComponent}, //用户查看所有活动
+  {path:'showActivity/:userId', component: ActivityManagementComponent}, //我报名的所有会动
   {path:'showUser', component: UserComponent},
   {path:'showUser/:id', component: UserComponent},
-  {path:'addActivity', component: AddActivityComponent},
+  {path:'addActivity', component: AddActivityComponent}, //添加活动
+  {path:'updateActivity/:id', component: AddActivityComponent}, //修改活动
   {path:'addUser', component: AddUserComponent},
   {path:'addUser/:userId', component: AddUserComponent},
   {path:'manageVolunteer', component: VolunteerManagementComponent},
@@ -35,7 +39,8 @@ const routes: Routes = [
     AddUserComponent,
     VolunteerManagementComponent,
     AddCommentComponent,
-    ActivityManagementComponent
+    ActivityManagementComponent,
+    VolunteerActivityListComponent
   ],
   imports: [
     RouterModule.forRoot(routes),
