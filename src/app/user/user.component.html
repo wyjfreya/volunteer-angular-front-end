@@ -27,8 +27,8 @@
                             <td class="align-middle">{{ user.address }}</td>
                             <td class="align-middle">{{ user.registerDate | date }}</td>
                             <td class="align-middle"><a routerLink="/updateUser/{{ user.id }}" manageVolunteer="active-link">修改用户</a></td>
-                            <td class="align-middle"><button (click)="deleteAUser(user.userName)" class="btn btn-link">删除用户</button></td>
-                            <td class="align-middle"><button (click)="resetPassword(user.id)" class="btn btn-link">重置密码</button></td>
+                            <td class="align-middle"><a (click)="deleteAUser(user.userName)">删除用户</a></td>
+                            <td class="align-middle"><a (click)="resetPassword(user.id)">重置密码</a></td>
                         </tr>
                     </tbody>
                 </table>
