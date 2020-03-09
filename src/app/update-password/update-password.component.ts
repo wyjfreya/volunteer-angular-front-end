@@ -18,7 +18,7 @@ export class UpdatePasswordComponent implements OnInit {
   constructor(private route: ActivatedRoute, private userService: UserService) { }
 
   ngOnInit() {
-    this.currentId = +this.route.snapshot.paramMap.get('id');
+    this.currentId = +localStorage.getItem("userId");
   }
 
 

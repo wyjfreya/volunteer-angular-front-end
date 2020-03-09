@@ -26,7 +26,7 @@
             <td class="align-middle" *ngIf="activity.enrollState.toString()=='PAUSED'"> 已暂停 </td>
             <td class="align-middle" *ngIf="activity.enrollState.toString()=='NOT_STARTED'"> 未开始 </td>
 
-            <td><button (click)="addRegister()" class="btn btn-info">立即报名</button></td>
+            <td><button (click)="addRegister(activity.id)" class="btn btn-info">立即报名</button></td>
         </tr>
     </tbody>
 </table>

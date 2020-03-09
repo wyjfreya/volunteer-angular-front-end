@@ -1,16 +1,13 @@
 <div class="page-wrapper">
 
   <!-- MENU SIDEBAR-->
-
-  <aside class="menu-sidebar d-none d-lg-block">
-    <div class="logo">
-      <a href="#">
-        <img src="assets/images/logo.png" alt="Volunteer" class="img-responsive">
-      </a>
-    </div>
-
-
-    <div *ngIf=isLogin()>
+  <div *ngIf=isLogin()>
+    <aside class="menu-sidebar d-none d-lg-block">
+      <div class="logo">
+        <a href="#">
+          <img src="assets/images/logo.png" alt="Volunteer" class="img-responsive">
+        </a>
+      </div>
       <div class="menu-sidebar-content js-scrollbar1">
         <nav class="navbar-sidebar">
           <ul class="list-unstyled navbar-list">
@@ -31,24 +28,23 @@
 
             <div *ngIf=isVolunteer()>
               <li>
-                <a routerLink="/showActivity/1" routerLinkActive="active-link">我的活动</a>
+                <a routerLink="/showMyActivity" routerLinkActive="active-link">我的活动</a>
               </li>
               <li>
                 <a routerLink="/showAllActivity" routerLinkActive="active-link">查看活动</a>
               </li>
               <li>
-                <a routerLink="/updateUser/1" routerLinkActive="active-link">注册信息</a>
+                <a routerLink="/updateMyUser" routerLinkActive="active-link">注册信息</a>
               </li>
               <li>
-                <a routerLink="/updatePassword/1" routerLinkActive="active-link">修改密码</a>
+                <a routerLink="/updatePassword" routerLinkActive="active-link">修改密码</a>
               </li>
             </div>
           </ul>
         </nav>
       </div>
-    </div>
-  </aside>
-
+    </aside>
+  </div>
   <!-- END MENU SIDEBAR-->
 
 

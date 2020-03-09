@@ -10,10 +10,13 @@ import { HttpResponse } from '@angular/common/http';
 })
 export class ActivityManagementComponent implements OnInit {
   registers: Register[];
+  userId = +localStorage.getItem("userId");
 
   constructor(private registerService: RegisterService) { }
+  
 
   ngOnInit() {
+    
     this.getRegisters();
   }
 
@@ -32,8 +35,9 @@ export class ActivityManagementComponent implements OnInit {
   }
 
   getRegisters() {
+
     
-    this.registerService.getAllRegister().subscribe(
+    this.registerService.getAllRegister(this.userId).subscribe(
       data => {
         if (!data) {
           this.registers = [];

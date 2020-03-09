@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { VolunteerService } from '../services/volunteer.service';
 import { Activity } from '../common/activity';
 import { HttpResponse } from '@angular/common/http';
-import { ActivatedRoute } from '@angular/router';  
+import { ActivatedRoute, Router } from '@angular/router';  
 import { NgForm } from '@angular/forms';
 
 @Component({
@@ -17,7 +17,7 @@ export class AddActivityComponent implements OnInit {
   //startTime: Date;
   
   constructor(private volunteerService: VolunteerService,
-              private route: ActivatedRoute) { }
+              private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
     const hasCurrentId: boolean = this.route.snapshot.paramMap.has('id');
@@ -45,7 +45,7 @@ export class AddActivityComponent implements OnInit {
     } else {
       this.createActivity(tmp);
     }
-    activityForm.reset();
+    this.router.navigate(['showActivity']);
   }
 
   createActivity(newActivity: Activity) {

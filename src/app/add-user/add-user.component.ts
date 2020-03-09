@@ -18,11 +18,19 @@ export class AddUserComponent implements OnInit {
 
   ngOnInit() {
     const hasCurrentId: boolean = this.route.snapshot.paramMap.has('id');
-    if (hasCurrentId) {
-      this.currentUserId = +this.route.snapshot.paramMap.get('id');
-      this.getUser(this.currentUserId);
+    if (hasCurrentId) { //修改用户。
+      this.currentUserId = +this.route.snapshot.paramMap.get('id');     
+    } else {
+      if (!this.isManager()) { //不是管理员，是志愿者要修改个人信息，则把他的信息放入表单。
+        this.currentUserId = +localStorage.getItem("userId");
+      }
     }
+    this.getUser(this.currentUserId);
 
+  }
+
+  isManager() {
+    return localStorage.getItem("isManager") === "1";
   }
 
   getUser(id) {
@@ -55,9 +63,7 @@ export class AddUserComponent implements OnInit {
     
   }
 
-  isManager() {
-    return localStorage.getItem("isManager") === "1";
-  }
+  
 
   // 增加用户
   createUser(user: User) {

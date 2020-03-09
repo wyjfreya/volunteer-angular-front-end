@@ -37,10 +37,11 @@ export class VolunteerActivityListComponent implements OnInit {
   }
 
 
-  addRegister() {
+  addRegister(activityId: number) {
     this.registerToAdd = new Register();
-    this.registerToAdd.userId = 1;
-    this.registerToAdd.activityId = 1;
+    let currentId = +localStorage.getItem("userId");
+    this.registerToAdd.userId = currentId;
+    this.registerToAdd.activityId = activityId;
     this.registerService.addRegister(this.registerToAdd).subscribe(
       (data: HttpResponse<Register>) => {
         alert("报名成功！");

@@ -21,17 +21,18 @@ import { LoginComponent } from './login/login.component';
 const routes: Routes = [
   {path:'showActivity', component: ActivityComponent}, //管理员查看所有活动
   {path:'showAllActivity', component: VolunteerActivityListComponent}, //用户查看所有活动
-  {path:'showActivity/:userId', component: ActivityManagementComponent}, //我报名的所有会动
+  {path:'showMyActivity', component: ActivityManagementComponent}, //我报名的所有会动
   {path:'showUser', component: UserComponent},
   {path:'showUser/:id', component: UserComponent},
   {path:'addActivity', component: AddActivityComponent}, //添加活动
   {path:'updateActivity/:id', component: AddActivityComponent}, //修改活动
   {path:'addUser', component: AddUserComponent}, //新建用户
+  {path:'updateMyUser', component: AddUserComponent},//修改我的用户信息
   {path:'updateUser/:id', component: AddUserComponent},
-  {path:'manageVolunteer', component: VolunteerManagementComponent},
+  {path:'manageVolunteer/:id', component: VolunteerManagementComponent},//根据活动管理志愿者
   {path:'addComment/:id', component: AddCommentComponent}, //给志愿者填写评价
   {path:'addFeedback/:id', component: AddCommentComponent}, ////给活动提交反馈
-  {path:'updatePassword/:id', component: UpdatePasswordComponent}, ////修改密码
+  {path:'updatePassword', component: UpdatePasswordComponent}, ////修改密码
   {path:'login', component: LoginComponent}, //登录
   {path:'', component: LoginComponent} //登录
 ];

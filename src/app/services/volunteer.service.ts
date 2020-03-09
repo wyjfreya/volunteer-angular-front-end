@@ -19,8 +19,6 @@ export class VolunteerService {
   constructor(private httpClient: HttpClient) { }
 
   getAcitivities(): Observable<Activity[]> {
-    // return this.httpClient.get<GetResponse>(this.baseUrl).pipe(
-    //   map(response => response._embedded.activities)
     return this.httpClient.get<Activity[]>(`${this.getAllActivityUrl}`);
  
   }

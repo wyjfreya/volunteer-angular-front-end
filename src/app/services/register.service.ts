@@ -11,8 +11,8 @@ export class RegisterService {
   constructor(private httpClient: HttpClient) { }
 
   private baseUrl = 'http://localhost:8062/register';
-  private getAllUserByActivityUrl = this.baseUrl + '/getAllUserByActivity';
-  private getAllRegisterByUserUrl = this.baseUrl + '/getAllRegisterByUser';
+  private getAllUserByActivityUrl = this.baseUrl + '/getAllUserByActivity/';
+  private getAllRegisterByUserUrl = this.baseUrl + '/getAllRegisterByUser/';
   private addRegisterUrl = this.baseUrl + '/addRegister';
   private deleteRegisterUrl = this.baseUrl + '/deleteRegister/';
   private updateCommentUrl = this.baseUrl + '/updateComment';
@@ -21,12 +21,12 @@ export class RegisterService {
   private updateStateUrl = this.baseUrl + '/updateState';
   
 
-  getAllUser(): Observable<Register[]> {
-    return this.httpClient.get<Register[]>(`${this.getAllUserByActivityUrl + '/1'}`);
+  getAllUser(activityId: number): Observable<Register[]> {
+    return this.httpClient.get<Register[]>(`${this.getAllUserByActivityUrl}` + activityId);
   }
 
-  getAllRegister(): Observable<Register[]> {
-    return this.httpClient.get<Register[]>(`${this.getAllRegisterByUserUrl + '/1'}`);
+  getAllRegister(userId: number): Observable<Register[]> {
+    return this.httpClient.get<Register[]>(`${this.getAllRegisterByUserUrl}` + userId);
   }
 
   addRegister(register: Register): Observable<HttpResponse<Register>> {

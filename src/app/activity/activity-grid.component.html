@@ -34,7 +34,7 @@
             <td class="align-middle"><a routerLink="/updateActivity/{{ activity.id }}" manageVolunteer="active-link">修改活动</a></td>
             <td class="align-middle"><button (click)="deleteActivity(activity.id)" class="btn btn-link">删除活动</button></td>
             <td class="align-middle"><button (click)="applyCampaignTime(activity.startTime, activity.endTime)" class="btn btn-link">公益时长申报</button></td>
-            <td class="align-middle"><a routerLink="/manageVolunteer" manageVolunteer="active-link">志愿者管理</a></td>
+            <td class="align-middle"><a routerLink="/manageVolunteer/{{activity.id}}" manageVolunteer="active-link">志愿者管理</a></td>
         </tr>
     </tbody>
 </table>
