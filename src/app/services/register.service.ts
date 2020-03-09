@@ -10,7 +10,7 @@ export class RegisterService {
 
   constructor(private httpClient: HttpClient) { }
 
-  private baseUrl = 'http://localhost:8062/register';
+  private baseUrl = 'http://localhost:8080/register';
   private getAllUserByActivityUrl = this.baseUrl + '/getAllUserByActivity/';
   private getAllRegisterByUserUrl = this.baseUrl + '/getAllRegisterByUser/';
   private addRegisterUrl = this.baseUrl + '/addRegister';

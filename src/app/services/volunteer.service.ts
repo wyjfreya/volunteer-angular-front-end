@@ -9,7 +9,7 @@ import { map } from 'rxjs/operators';
 })
 export class VolunteerService {
 
-  private baseUrl = 'http://localhost:8062/activity';
+  private baseUrl = 'http://localhost:8080/activity';
   private getAllActivityUrl = this.baseUrl + '/getAllActivities';
   private getActivityUrl = this.baseUrl + '/getActivity/';
   private addActivityUrl = this.baseUrl + '/addActivity';

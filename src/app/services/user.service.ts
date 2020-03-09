@@ -9,7 +9,7 @@ import { LoginResponse } from '../common/login-response';
 })
 export class UserService {
 
-  private baseUrl = 'http://localhost:8062/user';
+  private baseUrl = 'http://localhost:8080/user';
   private loginUrl = this.baseUrl + '/login';
   private getAllUsersUrl = this.baseUrl + '/getUsers';
   private getUsersUrl = this.baseUrl + '/getUserById/';

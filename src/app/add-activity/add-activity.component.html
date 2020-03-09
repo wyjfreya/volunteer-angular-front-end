@@ -22,12 +22,12 @@
 
                 <fieldset class="form-group">
                     <label>*开始时间:</label>
-                    <input [(ngModel)]="activity.startTime" type="date" class="form-control" name="startTime" placeholder="MM/DD/YYYY" required/>
+                    <input [(ngModel)]="activity.startTime" type="text" class="form-control" name="startTime" placeholder="MM/DD/YYYY" bsDatepicker [bsConfig]="datePickerConfig" required/>
                 </fieldset>
 
                 <fieldset class="form-group">
                     <label>*结束时间:</label>
-                    <input [(ngModel)]="activity.endTime" type="date" class="form-control" name="endTime" placeholder="MM/DD/YYYY" required/>
+                    <input [(ngModel)]="activity.endTime" type="text" class="form-control" name="endTime" placeholder="MM/DD/YYYY" bsDatepicker [bsConfig]="datePickerConfig" required/>
                 </fieldset>
 
             <div *ngIf="isExistingActivity()">

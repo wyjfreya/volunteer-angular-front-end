@@ -2,8 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { VolunteerService } from '../services/volunteer.service';
 import { Activity } from '../common/activity';
 import { HttpResponse } from '@angular/common/http';
-import { ActivatedRoute, Router } from '@angular/router';  
+import { ActivatedRoute, Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
+import { BsDatepickerConfig } from 'ngx-bootstrap/datepicker';
+import { templateJitUrl } from '@angular/compiler';
 
 @Component({
   selector: 'app-add-activity',
@@ -11,13 +13,16 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./add-activity.component.css']
 })
 export class AddActivityComponent implements OnInit {
-
+  datePickerConfig: Partial<BsDatepickerConfig>;
   currentActivityId: number;
   activity: Activity = new Activity();
+  activities: Activity[];
   //startTime: Date;
-  
+
   constructor(private volunteerService: VolunteerService,
-              private route: ActivatedRoute, private router: Router) { }
+    private route: ActivatedRoute, private router: Router) {
+    this.datePickerConfig = Object.assign({}, { dateInputFormat: 'YYYY-MM-DD', containerClass:'theme-blue' });
+  }
 
   ngOnInit() {
     const hasCurrentId: boolean = this.route.snapshot.paramMap.has('id');
@@ -26,9 +31,9 @@ export class AddActivityComponent implements OnInit {
       this.getActivity(this.currentActivityId);
     }
   }
-  
+
   getActivity(id) {
-    this.volunteerService.getActivity(id).subscribe (
+    this.volunteerService.getActivity(id).subscribe(
       data => {
         this.activity = data;
         console.log(this.activity);
@@ -40,12 +45,17 @@ export class AddActivityComponent implements OnInit {
   // 增加活动
   onSubmit(activityForm: NgForm) {
     let tmp = activityForm.value;
-    if(tmp.id > 0) {
+    if (tmp.startTime > tmp.endTime) {
+      alert("结束时间不能小于开始时间！");
+      return;
+    }
+    if (tmp.id > 0) {
       this.updateActivity(tmp);
     } else {
       this.createActivity(tmp);
     }
     this.router.navigate(['showActivity']);
+    this.getAllActivities();
   }
 
   createActivity(newActivity: Activity) {
@@ -57,7 +67,7 @@ export class AddActivityComponent implements OnInit {
       (err: HttpResponse<Activity>) => {
         alert("添加失败，请检查数据！");
       }
-    ); 
+    );
   }
 
   // 修改活动
@@ -73,7 +83,27 @@ export class AddActivityComponent implements OnInit {
         alert("修改失败，请检查数据！");
 
       }
-    ); 
+    );
+  }
+
+  getAllActivities() {
+    //check if "userid" parameter is available
+    //const hasActivityId: boolean = this.route.snapshot.params.has('id');
+    // if (hasActivityId) {
+    //   this.currentUserId = +this.route.snapshot.params.get('id');
+    // } else {
+
+    // }
+
+    this.volunteerService.getAcitivities().subscribe (
+      data => {
+        if (!data) {
+          this.activities = [];
+        } else {
+          this.activities = data;
+        }
+      }
+    )
   }
 
   isExistingActivity() {

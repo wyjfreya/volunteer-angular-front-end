@@ -7,6 +7,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { VolunteerService } from './services/volunteer.service';
 import { UserComponent } from './user/user.component';
 import { FormsModule } from '@angular/forms';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 import { Routes, RouterModule } from '@angular/router';
 import { AddActivityComponent } from './add-activity/add-activity.component';
@@ -18,6 +19,7 @@ import { VolunteerActivityListComponent } from './volunteer-activity-list/volunt
 import { UpdatePasswordComponent } from './update-password/update-password.component';
 import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 
 const routes: Routes = [
   {path:'showActivity', component: ActivityComponent}, //管理员查看所有活动
@@ -54,10 +56,12 @@ const routes: Routes = [
     HomeComponent
   ],
   imports: [
+    BsDatepickerModule.forRoot(),
     RouterModule.forRoot(routes),
     BrowserModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    NoopAnimationsModule
   ],
   providers: [VolunteerService],
   bootstrap: [AppComponent]
