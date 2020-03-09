@@ -1,9 +1,9 @@
 body {
-    background: url("assets/images/background-alpha.png");
+    background: url("../../assets/images/background-alpha.png");
     background-size: cover;
     background-position: center;
     font-family: Lato;
-    color: rgba(19, 18, 18, 0.856);
+    color: white;
   }
   
   html {

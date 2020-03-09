@@ -17,6 +17,7 @@ import { ActivityManagementComponent } from './activity-management/activity-mana
 import { VolunteerActivityListComponent } from './volunteer-activity-list/volunteer-activity-list.component';
 import { UpdatePasswordComponent } from './update-password/update-password.component';
 import { LoginComponent } from './login/login.component';
+import { HomeComponent } from './home/home.component';
 
 const routes: Routes = [
   {path:'showActivity', component: ActivityComponent}, //管理员查看所有活动
@@ -34,7 +35,7 @@ const routes: Routes = [
   {path:'addFeedback/:id', component: AddCommentComponent}, ////给活动提交反馈
   {path:'updatePassword', component: UpdatePasswordComponent}, ////修改密码
   {path:'login', component: LoginComponent}, //登录
-  {path:'', component: LoginComponent} //登录
+  {path:'', component: HomeComponent} //登录
 ];
 
 @NgModule({
@@ -49,7 +50,8 @@ const routes: Routes = [
     ActivityManagementComponent,
     VolunteerActivityListComponent,
     UpdatePasswordComponent,
-    LoginComponent
+    LoginComponent,
+    HomeComponent
   ],
   imports: [
     RouterModule.forRoot(routes),
