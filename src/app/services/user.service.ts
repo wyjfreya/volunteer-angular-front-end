@@ -15,6 +15,7 @@ export class UserService {
   private userDeleteUrl = this.baseUrl + '/deleteUser';
   private updateUserUrl = this.baseUrl + '/updateUser';
   private resetPasswordUrl = this.baseUrl + '/resetPassword/';
+  private updatePasswordUrl = this.baseUrl + '/updatePassword';
 
   
   constructor(private httpClient: HttpClient) { }
@@ -51,6 +52,11 @@ export class UserService {
   updateUser(user: User): Observable<HttpResponse<User>> {
 
     return this.httpClient.put<User>(`${this.updateUserUrl}`, user, { observe: 'response' });
+  }
+
+  updatePassword(user: User): Observable<HttpResponse<User>> {
+
+    return this.httpClient.put<User>(`${this.updatePasswordUrl}`, user, { observe: 'response' });
   }
 
 }

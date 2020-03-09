@@ -27,6 +27,14 @@ export class ActivityComponent implements OnInit {
     
   }
 
+  applyCampaignTime(startTime: Date, endTime: Date) {
+    
+    var dateDiff = new Date(endTime).getTime() - new Date(startTime).getTime();
+    var dayDiff = Math.floor(dateDiff / (24 * 3600 * 1000));
+    alert("已申报" + dayDiff + "天公益时长！");
+
+  }
+
 
   getAllActivities() {
     //check if "userid" parameter is available

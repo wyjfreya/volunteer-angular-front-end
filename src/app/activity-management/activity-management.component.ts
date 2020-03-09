@@ -25,6 +25,7 @@ export class ActivityManagementComponent implements OnInit {
       },
       //handle errors here
       (err: HttpResponse<String>) => {
+        console.log(err);
         alert("取消报名失败");
       }
     );

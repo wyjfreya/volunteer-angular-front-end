@@ -41,13 +41,18 @@ export class AddUserComponent implements OnInit {
 
   // 判断新建还是修改
   onSubmit(userForm: NgForm) {
+    if (userForm.value.password != userForm.value.confirmPassword) {
+      alert("密码不一致,请重新输入！");
+      return;
+    }
     let tmp = userForm.value;
     if(tmp.id > 0) {
       this.updateUser(tmp);
     } else {
       this.createUser(tmp);
+      userForm.reset();
     }
-    userForm.reset();
+    
   }
 
   // 增加用户

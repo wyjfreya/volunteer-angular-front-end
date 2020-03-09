@@ -15,6 +15,8 @@ import { VolunteerManagementComponent } from './volunteer-management/volunteer-m
 import { AddCommentComponent } from './add-comment/add-comment.component';
 import { ActivityManagementComponent } from './activity-management/activity-management.component';
 import { VolunteerActivityListComponent } from './volunteer-activity-list/volunteer-activity-list.component';
+import { UpdatePasswordComponent } from './update-password/update-password.component';
+import { LoginComponent } from './login/login.component';
 
 const routes: Routes = [
   {path:'showActivity', component: ActivityComponent}, //管理员查看所有活动
@@ -27,7 +29,9 @@ const routes: Routes = [
   {path:'addUser', component: AddUserComponent}, //新建用户
   {path:'updateUser/:id', component: AddUserComponent},
   {path:'manageVolunteer', component: VolunteerManagementComponent},
-  {path:'addComment', component: AddCommentComponent}
+  {path:'addComment/:id', component: AddCommentComponent}, //给志愿者填写评价
+  {path:'addFeedback/:id', component: AddCommentComponent}, ////给活动提交反馈
+  {path:'updatePassword/:id', component: UpdatePasswordComponent} ////修改密码
 ];
 
 @NgModule({
@@ -40,7 +44,9 @@ const routes: Routes = [
     VolunteerManagementComponent,
     AddCommentComponent,
     ActivityManagementComponent,
-    VolunteerActivityListComponent
+    VolunteerActivityListComponent,
+    UpdatePasswordComponent,
+    LoginComponent
   ],
   imports: [
     RouterModule.forRoot(routes),

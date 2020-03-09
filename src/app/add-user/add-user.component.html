@@ -6,7 +6,7 @@
             <hr/>
 
 
-    <form #myform="ngForm" (ngSubmit)="onSubmit(myform)">
+    <form #myform="ngForm" (ngSubmit)="onSubmit(myform)" ngNativeValidate>
         <H4>注册信息</H4>
         <div> <input type="hidden" name="id" [(ngModel)]="user.id"></div>
         <fieldset class="form-group">
@@ -18,6 +18,11 @@
         <fieldset class="form-group">
             <label>*密码:</label>
             <input type="password" class="form-control" name="password" placeholder="请输入至少6位密码" required="required" minlength="6" [(ngModel)]="user.password">
+        </fieldset>
+
+        <fieldset class="form-group">
+            <label>*确认密码:</label>
+            <input type="password" class="form-control" name="confirmPassword" placeholder="请输入至少6位密码" required="required" minlength="6" [(ngModel)]="user.confirmPassword">
         </fieldset>
         </div>
 

@@ -8,6 +8,7 @@
                             <th>姓名</th>
                             <th>性别</th>
                             <th>报名状态</th>
+                            <th>填写评价</th>
                             <th>填写反馈</th>
                         </tr>
                     </thead>
@@ -16,10 +17,11 @@
                             <td class="align-middle">{{ register.name }}</td>
                             <td>{{ register.gender }}</td>
                             <div *ngIf="register.state.toString() == 'PENDING';then content else other_content">here is ignored</div>
-                            <ng-template #content><td><a routerLink="/approveRegister" manageVolunteer="active-link">待批准</a></td></ng-template>
+                            <ng-template #content><td><button (click)="aprroveRegister(register.id)" class="btn btn-info">待批准</button></td></ng-template>
                             <ng-template #other_content><td>已批准</td></ng-template>
                             
-                            <td><a routerLink="/addComment" manageVolunteer="active-link">填写反馈</a></td>
+                            <td><a routerLink="/addComment/{{register.id}}" manageVolunteer="active-link">填写评价</a></td>
+                            <td>{{ register.feedback }}</td>
                         </tr>
                     </tbody>
                 </table>

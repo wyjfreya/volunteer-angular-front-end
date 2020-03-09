@@ -5,29 +5,29 @@
             <H1>发布活动</H1>
 
 
-            <form #activityForm="ngForm" (ngSubmit)="onSubmit(activityForm)">
+            <form #activityForm="ngForm" (ngSubmit)="onSubmit(activityForm)" ngNativeValidate>
 
                 <div> <input type="hidden" name="id" [(ngModel)]="activity.id"></div>
 
                 <fieldset class="form-group">
                     <label>*活动名称：</label>
-                    <input type="text" class="form-control" name="name"  placeholder="请输入活动名称" [(ngModel)]="activity.name">
+                    <input type="text" class="form-control" name="name"  placeholder="请输入活动名称" [(ngModel)]="activity.name" required>
                 </fieldset>
 
                 <fieldset class="form-group">
                     <label>*活动内容：</label>
                     <textarea class="form-control" name="content" #name="ngModel" placeholder="请输入活动内容" rows="5"
-                        [(ngModel)]="activity.content"></textarea>
+                        [(ngModel)]="activity.content" required></textarea>
                 </fieldset>
 
                 <fieldset class="form-group">
                     <label>*开始时间:</label>
-                    <input [(ngModel)]="activity.startTime" type="date" class="form-control" name="startTime" placeholder="MM/DD/YYYY"/>
+                    <input [(ngModel)]="activity.startTime" type="date" class="form-control" name="startTime" placeholder="MM/DD/YYYY" required/>
                 </fieldset>
 
                 <fieldset class="form-group">
                     <label>*结束时间:</label>
-                    <input [(ngModel)]="activity.endTime" type="date" class="form-control" name="endTime" placeholder="MM/DD/YYYY">
+                    <input [(ngModel)]="activity.endTime" type="date" class="form-control" name="endTime" placeholder="MM/DD/YYYY" required/>
                 </fieldset>
 
             <div *ngIf="isExistingActivity()">

@@ -2,15 +2,32 @@
     <div class="section-content section-content-p30">
         <div class="container-fluid">
 
+            
+            <form #commentForm="ngForm" (ngSubmit)="onSubmit(commentForm)">
+            <div> <input type="hidden" name="id" [(ngModel)]="register.id"></div>
+
+            <div *ngIf="isComment()">
             <H1>填写志愿者评价</H1>
             <fieldset class="form-group">
-                <textarea class="form-control" name="content" placeholder="请输入评价内容" required="required"
-                    rows="5"></textarea>
+                <textarea class="form-control" name="comment" placeholder="请输入评价内容" required="required"
+                    rows="10" [(ngModel)]="register.comment"></textarea>
             </fieldset>
+            </div>
+
+            <div *ngIf="isFeedback()">
+            <H1>填写活动反馈</H1>
+            <fieldset class="form-group">
+                <textarea class="form-control" name="feedback" placeholder="请输入反馈内容" required="required"
+                    rows="10" [(ngModel)]="register.feedback"></textarea>
+            </fieldset>
+            </div>
 
 
             <button type="submit" class="btn btn-success">保存</button> &nbsp;&nbsp;
             <button type="reset" class="btn btn-success">重置</button>
+            </form>
+
+             <!-- {{commentForm.value | json}} -->
 
         </div>
     </div>
