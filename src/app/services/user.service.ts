@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient,HttpResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { User } from '../common/user';
+import { LoginResponse } from '../common/login-response';
 
 @Injectable({
   providedIn: 'root'
@@ -9,6 +10,7 @@ import { User } from '../common/user';
 export class UserService {
 
   private baseUrl = 'http://localhost:8062/user';
+  private loginUrl = this.baseUrl + '/login';
   private getAllUsersUrl = this.baseUrl + '/getUsers';
   private getUsersUrl = this.baseUrl + '/getUserById/';
   private addUserUrl = this.baseUrl + '/addUser';
@@ -19,6 +21,12 @@ export class UserService {
 
   
   constructor(private httpClient: HttpClient) { }
+
+  login(user: User): Observable<HttpResponse<LoginResponse>> {
+    
+    return this.httpClient.post<LoginResponse>(`${this.loginUrl}`, user, { observe: 'response' });
+ 
+  }
 
   //查看所有用户
   getAllUsers(): Observable<User[]> {

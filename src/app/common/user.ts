@@ -7,4 +7,5 @@ export class User {
     phoneNumber: String;
     address: String;
     registerDate: Date;
+    isManager: number;
 }

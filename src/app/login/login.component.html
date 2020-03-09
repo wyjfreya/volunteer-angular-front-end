@@ -1,1 +1,25 @@
-<p>login works!</p>
+<div class="main-content">
+  <div class="section-content section-content-p30">
+    <div class="container-fluid">
+
+      <H1>请登录</H1>
+      <form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)" ngNativeValidate>
+
+        <div class="container">
+
+          <div>
+
+            用户名 : <input type="text" name="userName" [(ngModel)]="userName" required>
+            密 码 : <input type="password" name="password" [(ngModel)]="password" required>
+
+            <button class="btn btn-success">登录</button>
+
+
+          </div>
+        </div>
+      </form>
+
+
+    </div>
+  </div>
+</div>

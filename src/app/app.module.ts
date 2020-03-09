@@ -31,7 +31,9 @@ const routes: Routes = [
   {path:'manageVolunteer', component: VolunteerManagementComponent},
   {path:'addComment/:id', component: AddCommentComponent}, //给志愿者填写评价
   {path:'addFeedback/:id', component: AddCommentComponent}, ////给活动提交反馈
-  {path:'updatePassword/:id', component: UpdatePasswordComponent} ////修改密码
+  {path:'updatePassword/:id', component: UpdatePasswordComponent}, ////修改密码
+  {path:'login', component: LoginComponent}, //登录
+  {path:'', component: LoginComponent} //登录
 ];
 
 @NgModule({

@@ -1,44 +1,54 @@
 <div class="page-wrapper">
 
   <!-- MENU SIDEBAR-->
+
   <aside class="menu-sidebar d-none d-lg-block">
     <div class="logo">
       <a href="#">
         <img src="assets/images/logo.png" alt="Volunteer" class="img-responsive">
       </a>
     </div>
-    <div class="menu-sidebar-content js-scrollbar1">
-      <nav class="navbar-sidebar">
-        <ul class="list-unstyled navbar-list">
-          <li>
-            <a routerLink="/addActivity" routerLinkActive="active-link">发布活动</a>
-          </li>
-          <li>
-            <a routerLink="/showActivity" routerLinkActive="active-link">所有活动</a>
-          </li>
-          <li>
-            <a routerLink="/addUser" routerLinkActive="active-link">添加用户</a>
-          </li>
-          <li>
-            <a routerLink="/showUser" routerLinkActive="active-link">查看用户</a>
-          </li>
 
-          <li>
-            <a routerLink="/showActivity/1" routerLinkActive="active-link">我的活动</a>
-          </li> 
-          <li>
-            <a routerLink="/showAllActivity" routerLinkActive="active-link">查看活动</a>
-          </li>     
-          <li>
-            <a routerLink="/updateUser/1" routerLinkActive="active-link">注册信息</a>
-          </li>
-          <li>
-            <a routerLink="/updatePassword/1" routerLinkActive="active-link">修改密码</a>
-          </li>
-        </ul>
-      </nav>
+
+    <div *ngIf=isLogin()>
+      <div class="menu-sidebar-content js-scrollbar1">
+        <nav class="navbar-sidebar">
+          <ul class="list-unstyled navbar-list">
+            <div *ngIf=isManager()>
+              <li>
+                <a routerLink="/addActivity" routerLinkActive="active-link">发布活动</a>
+              </li>
+              <li>
+                <a routerLink="/showActivity" routerLinkActive="active-link">所有活动</a>
+              </li>
+              <li>
+                <a routerLink="/addUser" routerLinkActive="active-link">添加用户</a>
+              </li>
+              <li>
+                <a routerLink="/showUser" routerLinkActive="active-link">查看用户</a>
+              </li>
+            </div>
+
+            <div *ngIf=isVolunteer()>
+              <li>
+                <a routerLink="/showActivity/1" routerLinkActive="active-link">我的活动</a>
+              </li>
+              <li>
+                <a routerLink="/showAllActivity" routerLinkActive="active-link">查看活动</a>
+              </li>
+              <li>
+                <a routerLink="/updateUser/1" routerLinkActive="active-link">注册信息</a>
+              </li>
+              <li>
+                <a routerLink="/updatePassword/1" routerLinkActive="active-link">修改密码</a>
+              </li>
+            </div>
+          </ul>
+        </nav>
+      </div>
     </div>
   </aside>
+
   <!-- END MENU SIDEBAR-->
 
 
@@ -49,19 +59,15 @@
       <div class="section-content section-content-p30">
         <div class="container-fluid">
           <div class="header-wrap">
-            <form class="form-header" onsubmit="return false;" method="GET">
-              <input class="au-input au-input-xl" type="text" name="search"
-                placeholder="Search for data ..." />
-              <button class="au-btn-submit" type="submit">
-                查看
-              </button>
-            </form>
-            <div class="cart-area d-n">
-              <a href="shopping-detail.html">
-                <div class="total">19.22 <span> 2</span> </div> <i class="fa fa-shopping-cart"
-                  aria-hidden="true"></i>
-              </a>
-            </div>
+            <h1 id="banner">志愿者管理系统</h1>
+            <div *ngIf="isLogin(); then thenBlock else elseBlock"></div>
+            <ng-template #thenBlock>
+              <a (click)="logout()" class="btn btn-primary" routerLinkActive="active-link">退出</a>
+            </ng-template>
+            <ng-template #elseBlock>
+              <a routerLink="/login" class="btn btn-primary" routerLinkActive="active-link">登录</a>
+              <a routerLink="/addUser" class="btn btn-primary" routerLinkActive="active-link">注册</a>
+            </ng-template>
           </div>
           <div class="account-wrap"></div>
         </div>
@@ -78,8 +84,7 @@
 <!--End page container-->
 <footer class="footer">
   <div class="container">
-      <span class="text-muted">All Rights Reserved 2020</span>
+    <span class="text-muted">All Rights Reserved 2020</span>
   </div>
 
 </footer>
-

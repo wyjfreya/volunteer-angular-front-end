@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient,HttpResponse } from '@angular/common/http';
 import { UserService } from '../services/user.service';
 import { User } from '../common/user';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
 
 @Component({
@@ -14,7 +14,7 @@ export class AddUserComponent implements OnInit {
   currentUserId: number;
   user: User = new User();
 
-  constructor(private userService: UserService, private route: ActivatedRoute) { }
+  constructor(private userService: UserService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
     const hasCurrentId: boolean = this.route.snapshot.paramMap.has('id');
@@ -55,11 +55,20 @@ export class AddUserComponent implements OnInit {
     
   }
 
+  isManager() {
+    return localStorage.getItem("isManager") === "1";
+  }
+
   // 增加用户
   createUser(user: User) {
     this.userService.addUser(user).subscribe(
       (data: HttpResponse<User>) => {
         alert("添加成功！");
+        if(this.isManager()) {
+          this.router.navigate(['showUser']);
+        } else {
+          this.router.navigate(['login']);
+        }
       },
       //handle errors here
       (err: HttpResponse<User>) => {
