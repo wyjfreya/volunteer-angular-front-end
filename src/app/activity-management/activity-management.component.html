@@ -24,7 +24,9 @@
                             <ng-template #other_content><td class="align-middle">已批准</td></ng-template>
                             <td class="align-middle"><button (click)="deleteRegister(register.id)" class="btn btn-info">取消报名 </button></td>
                             <td class="align-middle"><a routerLink="/addFeedback/{{register.id}}" manageVolunteer="active-link">填写反馈</a></td>
-                            <td class="align-middle">{{ register.comment}}</td>
+                            <div *ngIf="register.comment == null;then content1 else other_content1">here is ignored</div>
+                            <ng-template #content1><td>暂未评价</td></ng-template>
+                            <ng-template #other_content1><td>{{ register.comment }}</td></ng-template>
                         </tr>
                     </tbody>
                 </table>

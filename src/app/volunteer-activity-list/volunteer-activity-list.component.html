@@ -26,7 +26,11 @@
             <td class="align-middle" *ngIf="activity.enrollState.toString()=='PAUSED'"> 已暂停 </td>
             <td class="align-middle" *ngIf="activity.enrollState.toString()=='NOT_STARTED'"> 未开始 </td>
 
-            <td><button (click)="addRegister(activity.id)" class="btn btn-info">立即报名</button></td>
+            <div *ngIf="activity.enrollState.toString()!='STARTED'; then content else other_content">here is ignored</div>
+            <ng-template #content><td>不可报名</td></ng-template>
+            <ng-template #other_content><td><button (click)="addRegister(activity.id)" class="btn btn-info">立即报名</button></td></ng-template>
+
+            <!-- <td><button (click)="addRegister(activity.id)" class="btn btn-info">立即报名</button></td> -->
         </tr>
     </tbody>
 </table>

@@ -9,19 +9,22 @@
                             <th>性别</th>
                             <th>报名状态</th>
                             <th>填写评价</th>
-                            <th>填写反馈</th>
+                            <th>查看反馈</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr *ngFor="let register of registers">
                             <td class="align-middle">{{ register.name }}</td>
                             <td>{{ register.gender }}</td>
-                            <div *ngIf="register.state.toString() == 'PENDING';then content else other_content">here is ignored</div>
-                            <ng-template #content><td><button (click)="aprroveRegister(register.id)" class="btn btn-info">待批准</button></td></ng-template>
-                            <ng-template #other_content><td>已批准</td></ng-template>
+                            <div *ngIf="register.state.toString() == 'PENDING';then content1 else other_content1">here is ignored</div>
+                            <ng-template #content1><td><button (click)="aprroveRegister(register.id)" class="btn btn-info">待批准</button></td></ng-template>
+                            <ng-template #other_content1><td>已批准</td></ng-template>
                             
                             <td><a routerLink="/addComment/{{register.id}}" manageVolunteer="active-link">填写评价</a></td>
-                            <td>{{ register.feedback }}</td>
+
+                            <div *ngIf="register.feedback == null;then content else other_content">here is ignored</div>
+                            <ng-template #content><td>暂未反馈</td></ng-template>
+                            <ng-template #other_content><td>{{ register.feedback }}</td></ng-template>
                         </tr>
                     </tbody>
                 </table>
