@@ -11,7 +11,8 @@
 
                 <fieldset class="form-group">
                     <label>*活动名称：</label>
-                    <input type="text" class="form-control" name="name"  placeholder="请输入活动名称" [(ngModel)]="activity.name" required>
+                    <input type="text" class="form-control" name="name" placeholder="请输入活动名称"
+                        [(ngModel)]="activity.name" required>
                 </fieldset>
 
                 <fieldset class="form-group">
@@ -22,40 +23,56 @@
 
                 <fieldset class="form-group">
                     <label>*开始时间:</label>
-                    <input [(ngModel)]="activity.startTime" type="text" class="form-control" name="startTime" placeholder="MM/DD/YYYY" bsDatepicker [bsConfig]="datePickerConfig" required/>
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <input [(ngModel)]="activity.startTime" type="text" class="form-control"
+                                name="startTime" placeholder="YYYY-MM-DD" placement="right" bsDatepicker
+                                [bsConfig]="datePickerConfig" required />
+                        </div>
+                    </div>
                 </fieldset>
 
                 <fieldset class="form-group">
                     <label>*结束时间:</label>
-                    <input [(ngModel)]="activity.endTime" type="text" class="form-control" name="endTime" placeholder="MM/DD/YYYY" bsDatepicker [bsConfig]="datePickerConfig" required/>
-                </fieldset>
-
-            <div *ngIf="isExistingActivity()">
-                <fieldset class="form-group">
-                    <label>*报名状态:</label>
-                    <div class="form-check ">
-                        <input type="radio" name="enrollState" value="NOT_STARTED" [(ngModel)]="activity.enrollState"/> 未开始报名
-                        <input type="radio" name="enrollState" value="STARTED" [(ngModel)]="activity.enrollState" /> 开始报名
-                        <input type="radio" name="enrollState" value="PAUSED" [(ngModel)]="activity.enrollState" /> 暂停报名
-                        <input type="radio" name="enrollState" value="FINISHED" [(ngModel)]="activity.enrollState" /> 结束报名
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <input [(ngModel)]="activity.endTime" type="text" class="form-control"
+                            name="endTime" placeholder="YYYY-MM-DD" placement="right" bsDatepicker
+                            [bsConfig]="datePickerConfig" required />
+                        </div>
                     </div>
                 </fieldset>
 
-                <fieldset class="form-group">
-                    <label>*完成活动:</label>
-                    <div class="form-check ">
-                        <input type="radio" name="isCompleted" [value]="0" [(ngModel)]="activity.isCompleted" /> 否
-                        <input type="radio" name="isCompleted" [value]="1" [(ngModel)]="activity.isCompleted" /> 是
-                    </div>
-                </fieldset>
-            </div>
+                <div *ngIf="isExistingActivity()">
+                    <fieldset class="form-group">
+                        <label>*报名状态:</label>
+                        <div class="form-check ">
+                            <input type="radio" name="enrollState" value="NOT_STARTED"
+                                [(ngModel)]="activity.enrollState" /> 未开始报名
+                            <input type="radio" name="enrollState" value="STARTED" [(ngModel)]="activity.enrollState" />
+                            开始报名
+                            <input type="radio" name="enrollState" value="PAUSED" [(ngModel)]="activity.enrollState" />
+                            暂停报名
+                            <input type="radio" name="enrollState" value="FINISHED"
+                                [(ngModel)]="activity.enrollState" /> 结束报名
+                        </div>
+                    </fieldset>
+
+                    <fieldset class="form-group">
+                        <label>*完成活动:</label>
+                        <div class="form-check ">
+                            <input type="radio" name="isCompleted" [value]="0" [(ngModel)]="activity.isCompleted" /> 否
+                            <input type="radio" name="isCompleted" [value]="1" [(ngModel)]="activity.isCompleted" /> 是
+                        </div>
+                    </fieldset>
+                </div>
                 <button type="submit" class="btn btn-info">保存</button> &nbsp; &nbsp;
 
                 <button type="reset" class="btn btn-info">重置</button>
             </form>
             <!--{{activityForm.value | json}}-->
-            <br/>
-            <br/>
+            <br />
+            <br />
             <!-- {{activity | json}} -->
         </div>
     </div>
